@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        .nostyle {
+            background-color: white;
+        }
+
+        .ib {
+            display: inline-block;
+        }
+
+
+        td {
+            padding: 0 15px 0 15px;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #e5e5e5;
+        }
+
+        td {
+            height: 40px;
+        }
+
+        th {
+            height: 40px;
+            background-color: lightgrey;
+        }
+    </style>
+    <script type="text/javascript">
+        function validate() {
+            var name = document.getElementById("txtname").value;
+            if (name == "") {
+                alert("Name cannot be blank.");
+                return;
+            }
+            
+            var g = "";
+            var gen = document.getElementsByName("gender");
+            if (gen[0].checked)
+                g = gen[0].value;
+            if (gen[1].checked)
+                g = gen[1].value;
+            if (!((gen[0].checked) || (gen[1].checked))) {
+                alert("Select Gender.");
+                return;
+            }
+            var age = parseInt(document.getElementById("txtage").value);
+            if (isNaN(age)) {
+                alert("Enter age as number:");
+                return;
+            }
+            var loc = document.getElementById("city").value;
+            if (loc == "select") {
+                alert("Select City.");
+                return;
+            }
+            alert(name+" , "+age+" , "+g+" , "+loc);
+        }
+
+    </script>
+</head>
+<body>
+    <div class="ib">
+        <p><b>List of Persons</b></p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>City</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>shazah</td>
+                <td>male</td>
+                <td>30</td>
+                <td>lahore</td>
+                <td>update/remove</td>
+            </tr>
+            <tr>
+                <td>danial</td>
+                <td>male</td>
+                <td>32</td>
+                <td>islamabhad</td>
+                <td>update/remove</td>
+            </tr>
+            <tr>
+                <td>sara</td>
+                <td>female</td>
+                <td>34</td>
+                <td>karachi</td>
+                <td>update/remove</td>
+            </tr>
+            <tr>
+                <td>tahir</td>
+                <td>male</td>
+                <td>38</td>
+                <td>lahore</td>
+                <td>update/remove</td>
+            </tr>
+        </table>
+    </div>
+    <div class="ib">
+        <p><b>Add/Update Person Form</b></p>
+        <table>
+            <tr class="nostyle">
+                <td>Name</td>
+                <td colspan="2"><input type="text" id="txtname"/></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td><input type="radio" value="Male" name="gender">Male</td>
+                <td><input type="radio" value="Female" name="gender">Female</td>
+            </tr>
+            <tr class="nostyle">
+                <td>Age</td>
+                <td colspan="2"><input type="text" id="txtage"/></td>
+            </tr>
+            <tr>
+                <td>City</td>
+                <td colspan="2">
+                    <select id="city">
+                        <option value="Lahore">Lahore</option>
+                        <option value="Karachi">Karachi</option>
+                        <option value="Islamabad">Islamabad</option>
+                    </select>
+                </td>
+
+            </tr>
+            <tr class="nostyle">
+                <td><input type="submit" value="Add" onclick="validate()" /></td>
+                <td><input type="reset" value="Reset" /></td>
+                <td><input type="button" value="Update" /></td>
+            </tr>
+        </table>
+
+    </div>
+</body>
+</html>
